@@ -1,6 +1,6 @@
 <?php
 namespace Core\DB;
-//////////////////////////////////////////////////
+
 class Adapter {
 	private static $mysqli;
 	private static function init() {

@@ -1,3 +1,4 @@
+	</div>
 	<!-- Link to Google CDN's jQuery + jQueryUI; fall back to local -->
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<script>if (!window.jQuery) {document.write('<script src="./assets/jquery/js/jquery.min.js"><\/script>');}</script>
