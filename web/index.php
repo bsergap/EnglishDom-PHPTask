@@ -1,6 +1,4 @@
 <?php
-define('STATICVER', '0.1');
-
 use \Core\DB\Adapter;
 use \Core\Events\EventManager;
 require_once __DIR__.'/../init.server.php';
@@ -19,7 +17,6 @@ foreach (EventManager::getInstance()->saveData() as $key1 => $val1) {
 	}
 }
 $sql = "INSERT INTO `$table_name`(`id`, `name`, `data`) VALUES\n".implode(",\n", $sql_rows);
-// echo '<pre>'; var_dump($sql); echo '</pre>'; exit;
 echo 'Added '.count($sql_rows).' observers.';
 Adapter::runQuery($sql);
 

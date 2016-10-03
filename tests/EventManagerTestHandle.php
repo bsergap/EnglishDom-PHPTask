@@ -1,7 +1,15 @@
 <?php
-require_once __DIR__.'/../init.server.php';
+/**
+ * Class EventManagerTestHandle
+ *
+ * PHP Task 4 EnglishDom
+ *
+ * @author   Sergey Borodinov <root.vs.bsa@gmail.com>
+ * @version  1.0
+ */
 
 use \Core\Events\EventManager;
+require_once __DIR__.'/../init.server.php';
 
 /**
  * Class EventManagerTestHandle

@@ -21,4 +21,6 @@ session_start();
 $_SESSION['csrf-is-valid'] = empty($_SESSION['csrf']) ? false :
 					($_SESSION['csrf'] == $_POST['csrf_token']);
 $_SESSION['csrf'] = bin2hex(openssl_random_pseudo_bytes(16));
+//////////////////////////////////////////////////
+define('STATICVER', '0.1');
 ?>

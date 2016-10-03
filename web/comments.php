@@ -1,6 +1,4 @@
 <?php
-define('STATICVER', '0.1');
-
 use \Core\DB\Adapter;
 use \Core\Events\EventManager;
 require_once __DIR__.'/../init.server.php';

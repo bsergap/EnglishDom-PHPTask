@@ -1,4 +1,13 @@
 <?php
+/**
+ * Class EventManager
+ *
+ * PHP Task 4 EnglishDom
+ *
+ * @author   Sergey Borodinov <root.vs.bsa@gmail.com>
+ * @version  1.0
+ */
+
 namespace Core\Events;
 
 /**
@@ -32,6 +41,7 @@ class EventManager {
 
     /**
      * Sort observers
+     * @param array $observers
      * @return array sorted $observers
      */
     private function _sortObservers($observers) {

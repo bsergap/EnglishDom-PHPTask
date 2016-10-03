@@ -1,4 +1,13 @@
 <?php
+/**
+ * Class EventManagerHelper
+ *
+ * PHP Task 4 EnglishDom
+ *
+ * @author   Sergey Borodinov <root.vs.bsa@gmail.com>
+ * @version  1.0
+ */
+
 namespace Helpers;
 
 /**
