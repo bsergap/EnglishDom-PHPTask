@@ -6,19 +6,19 @@ namespace Core\Events;
  * @property EventManager $instance
  * @property array $observers
  */
-class EventManager /*implements \Serializable*/ {
+class EventManager {
 
     /**
      * Singleton instance
      * @var EventManager
      */
-    protected static $instance;
+    private static $instance;
 
     /**
      * Event observers
      * @var array
      */
-    protected $observers = array();
+    private $observers = array();
 
     /**
      * Get EventManager instance
@@ -28,6 +28,20 @@ class EventManager /*implements \Serializable*/ {
         if (empty(static::$instance))
             static::$instance = new static();
         return static::$instance;
+    }
+
+    /**
+     * Sort observers
+     * @return array sorted $observers
+     */
+    private function _sortObservers($observers) {
+        if (count($observers) > 1) {
+            usort($observers, function($a, $b) {
+                if ($a['priority'] == $b['priority']) return 0;
+                return $a['priority'] > $b['priority'] ? 1: -1;
+            });
+        }
+        return $observers;
     }
 
     /**
@@ -59,13 +73,7 @@ class EventManager /*implements \Serializable*/ {
      * @return mixed modified $data
      */
     public function observerRun($name, $data) {
-        if (count($this->observers[$name]) > 1) {
-            usort($this->observers[$name], function($a, $b) {
-                if ($a['priority'] == $b['priority']) return 0;
-                return $a['priority'] > $b['priority'] ? 1: -1;
-            });
-        }
-        foreach ($this->observers[$name] as $event) {
+        foreach ($this->_sortObservers($this->observers[$name]) as $event) {
             $data = call_user_func($event['callback'], $data); //create_function('$data', )
         }
         return $data;
@@ -97,14 +105,28 @@ class EventManager /*implements \Serializable*/ {
         }
     }
 
-    public function __sleep() {
-        return array('observers');
-    }
+    public function saveData() {
+        foreach ($this->observers as $name => $observers) {
+            $observers = $this->_sortObservers($observers);
+            foreach ($observers as $data) {
+                $sdata[$name][] = serialize($data);
 
-    // public function serialize() {
-    //     return serialize($this->observers);
-    // }
-    // public function unserialize($observers) {
-    //     $this->observers = unserialize($observers);
-    // }
+            }
+        }
+        return $sdata;
+    }
+    public function loadData($sdata) {
+        $this->clearData();
+        foreach ($sdata as $name => $data) {
+            foreach ($data as $val) {
+                $this->observers[$name][] = unserialize($val);
+            }
+        }
+    }
+    public function clearData() {
+        $this->observers = array();
+    }
+    public function getData() {
+        return $this->observers;
+    }
 }

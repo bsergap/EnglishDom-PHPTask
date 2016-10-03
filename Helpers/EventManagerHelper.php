@@ -22,8 +22,8 @@ class EventManagerHelper {
      */
     static function replaceSmiles($data) {
         return strtr($data, array(
-                ':)' => '<img src="http://www.kolobok.us/smiles/standart/smile.gif">',
-                ':-)' => '<img src="http://www.kolobok.us/smiles/standart/smile.gif">',
+                ':)' => '<img src="http://www.kolobok.us/smiles/standart/mosking.gif">',
+                ':-)' => '<img src="http://www.kolobok.us/smiles/standart/mosking.gif">',
                 ':D' => '<img src="http://www.kolobok.us/smiles/standart/biggrin.gif">',
                 ':-D' => '<img src="http://www.kolobok.us/smiles/standart/biggrin.gif">',
                 ':(' => '<img src="http://www.kolobok.us/smiles/standart/sad.gif">',

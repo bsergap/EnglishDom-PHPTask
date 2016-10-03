@@ -4,9 +4,9 @@ require_once __DIR__.'/../init.server.php';
 use \Core\Events\EventManager;
 
 /**
- * Class EventManagerTest
+ * Class EventManagerTestHandle
  */
-class EventManagerTest extends \PHPUnit_Framework_TestCase {
+class EventManagerTestHandle extends \PHPUnit_Framework_TestCase {
 
     /**
      * Data provider 4 testHandle()
